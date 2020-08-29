@@ -1227,15 +1227,15 @@ int generic_num_threads_per_package()
  * use generic implementations for unknown architectures
  */
 
-void get_architecture(char * arch) {
+void get_architecture(char * arch, size_t len) {
     generic_get_architecture(arch);
 }
 
-int get_cpu_vendor(char* vendor) {
+int get_cpu_vendor(char* vendor, size_t len) {
     return generic_get_cpu_vendor(vendor);
 }
 
-int get_cpu_name(char* name) {
+int get_cpu_name(char* name, size_t len) {
     return generic_get_cpu_name(name);
 }
 
@@ -1251,12 +1251,12 @@ int get_cpu_stepping() {
     return generic_get_cpu_stepping();
 }
 
-int get_cpu_isa_extensions(char* features) {
+int get_cpu_isa_extensions(char* features, size_t len) {
     return generic_get_cpu_isa_extensions(features);
 }
 
 unsigned long long get_cpu_clockrate(int check, int cpu) {
-    return generic_get_cpu_clockrate(check,cpu);
+    return generic_get_cpu_clockrate(cpu);
 }
 
 unsigned long long timestamp() {
@@ -1267,8 +1267,8 @@ int num_caches(int cpu) {
     return generic_num_caches(cpu);
 }
 
-int cache_info(int cpu,int id, char* output) {
-    return generic_cache_info(cpu,id,output);
+int cache_info(int cpu,int id, char* output, size_t len) {
+    return generic_cache_info(cpu,id,output,len);
 }
 
 int cache_level(int cpu, int id) {
